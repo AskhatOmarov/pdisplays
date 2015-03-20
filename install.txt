@@ -1,0 +1,6 @@
+install mysql-server and client
+sudo apt-get install mysql-server mysql-client
+
+install mysql connector for python
+sudo apt-get install python-mysqldb
+sudo apt-get install libmysqlclient-dev
