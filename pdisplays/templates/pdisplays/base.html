@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="row">
+ 	<div class="col-md-2">
+	 	<a href="{% url 'all-displays' %}">All displays</a><br />
+	  	<a href="{% url 'new-display' %}">New display</a>
+  	</div>
+ 	<div class="col-md-10" style="border-left: 3px solid black">
+ 		{% block payload %}
+ 		{% endblock %}
+ 	</div>
+</div>
+{% endblock %}

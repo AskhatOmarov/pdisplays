@@ -42,6 +42,10 @@ class BaseConfiguration(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'bootstrap3',
+        'form_utils',
+        'widget_tweaks',
+        'pdisplays',
         'users',
     )
 

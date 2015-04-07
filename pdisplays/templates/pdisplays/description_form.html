@@ -1,0 +1,37 @@
+{% extends 'pdisplays/base.html' %}
+{% load bootstrap3 pdisplay_tags widget_tweaks %}
+{% block payload %}
+<div class="col-md-6">
+	<form action="" method="post" class="form-horizontal">
+    {% csrf_token %}
+    {% for fieldset in form.fieldsets %}
+	  <fieldset class="{{ fieldset.classes }}" style="margin-bottom:30px;">
+	  {% if fieldset.legend %}
+	    <legend>{{ fieldset.legend }}</legend>
+	  {% endif %}
+	  {% if fieldset.description %}
+	    <p class="description">{{ fieldset.description }}</p>
+	  {% endif %}
+	  {% for field in fieldset %}
+	    {% if field.is_hidden %}
+	      {{ field }}
+	    {% else %}
+	    <div class="form-group">
+	        {{ field.errors }}
+	        <label class="col-sm-4 control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+	        <div class="col-sm-8">
+	        	{{ field|addcss:'form-control' }}
+    		</div>
+	   	</div>
+	    {% endif %}
+	  {% endfor %}
+	  </fieldset>
+	{% endfor %}
+	{% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Submit
+        </button>
+    {% endbuttons %}
+	</form>
+</div>
+{% endblock %}

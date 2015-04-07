@@ -1,0 +1,11 @@
+{% extends 'pdisplays/base.html' %}
+{% load bootstrap3 pdisplay_tags %}
+{% block payload %}
+	<h3>Description # {{object.pk}}</h3>
+	{% for section in sections %}
+		<h3>{{section.title}}</h3>
+		{% for field in section.fields.all %}
+			<b>{{ field.title }}: </b>{{ object.values.all|get_value:field.slug}}<br />
+		{% endfor %}
+	{% endfor %}
+{% endblock %}
