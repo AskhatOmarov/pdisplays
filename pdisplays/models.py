@@ -6,6 +6,20 @@ class Display(models.Model):
     date_created = models.DateTimeField(blank=True, auto_now_add=True)
     date_edited = models.DateTimeField(blank=True, auto_now=True)
 
+    def add_description(self, json):
+        description = Description(display=self)
+        description.save()
+        for v in json:
+            try:
+                section_field = SectionField.objects.get(slug=v['slug'])
+                value = Value(section_field=section_field,
+                              description=description, 
+                              value=v['value'])
+                value.save()
+            except SectionField.DoesNotExist:
+                return False
+        return True
+
 class Description(models.Model):
     display = models.ForeignKey(Display, related_name='descriptions', null=True, blank=True)
     date_created = models.DateTimeField(blank=True, auto_now_add=True)

@@ -13,6 +13,12 @@ from pdisplays.views import (
     DisplayDescriptionDetailView,
 )
 
+from tastypie.api import Api
+from pdisplays.api import DisplayResource, FormResource
+
+v1_api = Api(api_name='v1')
+v1_api.register(DisplayResource())
+v1_api.register(FormResource())
 
 from users.models import User
 from pdisplays.models import Section, SectionField
@@ -24,6 +30,7 @@ admin.site.register(Section)
 class SectionFieldAdmin(admin.ModelAdmin):
     exclude = ('slug',)
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'pdisplays.views.home', name='home'),
@@ -31,6 +38,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('users.urls')),
+    url(r'^api/', include(v1_api.urls)),
     url(r'^displays/$', DisplayView.as_view(
         template_name = 'pdisplays/displays.html'),
         name='all-displays',

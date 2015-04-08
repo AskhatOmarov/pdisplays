@@ -6,3 +6,4 @@ wsgiref==0.1.2
 django-bootstrap3
 django-form-utils
 django-widget-tweaks
+django-tastypie

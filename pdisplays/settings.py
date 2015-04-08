@@ -42,6 +42,7 @@ class BaseConfiguration(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'tastypie',
         'bootstrap3',
         'form_utils',
         'widget_tweaks',
@@ -115,6 +116,8 @@ class BaseConfiguration(Configuration):
         rel('locale'),
     )
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+
+    TASTYPIE_DEFAULT_FORMATS = ['json']
 
 class DevConfiguration(BaseConfiguration):
     pass
