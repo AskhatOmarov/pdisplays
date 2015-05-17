@@ -1,10 +1,15 @@
 from django.db import models
+from geoposition.fields import GeopositionField
 from pdisplays import utils
 
 class Display(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
+    position = GeopositionField(default='0.0, 0.0')
     date_created = models.DateTimeField(blank=True, auto_now_add=True)
     date_edited = models.DateTimeField(blank=True, auto_now=True)
+
+    def __unicode__(self):
+        return self.title
 
     def add_description(self, json):
         description = Description(display=self)

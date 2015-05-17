@@ -21,8 +21,9 @@ v1_api.register(DisplayResource())
 v1_api.register(FormResource())
 
 from users.models import User
-from pdisplays.models import Section, SectionField
+from pdisplays.models import Display, Section, SectionField
 
+admin.site.register(Display)
 admin.site.register(User)
 admin.site.register(Section)
 
@@ -38,10 +39,20 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth/', include('users.urls')),
+    url(r'api/doc/', include('tastypie_swagger.urls', namespace='tastypie_swagger'),
+        kwargs={"tastypie_api_module":v1_api, "namespace":"tastypie_swagger"}),
     url(r'^api/', include(v1_api.urls)),
+    url(r'^$', DisplayView.as_view(
+        template_name = 'pdisplays/home.html'),
+        name='home-displays',
+    ),
     url(r'^displays/$', DisplayView.as_view(
         template_name = 'pdisplays/displays.html'),
         name='all-displays',
+    ),
+    url(r'^displays/map$', DisplayView.as_view(
+        template_name = 'pdisplays/displays-map.html'),
+        name='all-displays-map',
     ),
     url(r'^displays/(?P<pk>\d+)/$', DisplayDetailView.as_view(
         template_name = 'pdisplays/display.html'),

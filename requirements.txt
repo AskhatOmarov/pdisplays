@@ -7,3 +7,6 @@ django-bootstrap3
 django-form-utils
 django-widget-tweaks
 django-tastypie
+django-geoposition
+django-tastypie-swagger
+simplejson

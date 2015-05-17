@@ -1,0 +1,45 @@
+{% extends 'pdisplays/base.html' %}
+{% load bootstrap3 pdisplay_tags %}
+{% block payload %}
+	<h3>Displays <p class="text-right"><a href="{% url 'all-displays' %}">View as table</a></p></h3>
+	<div id="mapdiv" style="width:800px;height:480px;"></div>
+{% endblock %}
+
+{% block js %}
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/markerclusterer.js"></script>
+<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(51.508742,-0.120850),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("mapdiv"),mapProp);
+
+  var displays = {{ object_list|display_json }}
+  var markers = []
+  for(var i = 0; i < displays.length; i++) {
+    var latlng = displays[i].position.split(',')
+    var marker=new google.maps.Marker({
+      position:new google.maps.LatLng(parseFloat(latlng[0]), parseFloat(latlng[1])),
+    });
+    // var infowindow = new google.maps.InfoWindow({
+    //   content: displays[i].title
+    // });
+    // infowindow.open(map,marker);
+
+    markers.push(marker);
+  }
+
+  var mcOptions = {gridSize: 50, maxZoom: 15};
+  var mc = new MarkerClusterer(map, markers, mcOptions);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+    
+
+
+{% endblock %}

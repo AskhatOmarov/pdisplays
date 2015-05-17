@@ -43,12 +43,16 @@ class BaseConfiguration(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'tastypie',
+        'tastypie_swagger',
         'bootstrap3',
         'form_utils',
         'widget_tweaks',
+        'geoposition',
         'pdisplays',
         'users',
     )
+
+    TASTYPIE_SWAGGER_API_MODULE = 'pdisplays.urls.v1_api'
 
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',

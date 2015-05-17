@@ -1,0 +1,13 @@
+{% load bootstrap3 pdisplay_tags %}
+
+<div style="color:white">
+	<h2>{{display.title}}</h2>
+	{% with description=display|get_description %}
+		{% for section in sections %}
+			<h4>{{section.title}}</h4>
+			{% for field in section.fields.all %}
+				<b>{{ field.title }}: </b>{{ description|get_descr_value:field.slug}}<br />
+			{% endfor %}
+		{% endfor %}
+	{% endwith %}
+</div>

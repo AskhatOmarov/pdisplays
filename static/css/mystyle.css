@@ -1,0 +1,10 @@
+body {
+}
+
+.global_title {
+	color: black;
+}
+.global_title:hover {
+	color: black;
+	text-decoration: none;
+}
