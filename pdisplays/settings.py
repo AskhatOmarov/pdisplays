@@ -75,9 +75,9 @@ class BaseConfiguration(Configuration):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'pdisplays',
-            'USER': 'root',
-            'PASSWORD': '',
+            'NAME': 'heroku_31a7e683faba4b1',
+            'USER': 'b44ba429f7e32e',
+            'PASSWORD': '3ae77e10',
             'HOST': '',
             'PORT': '',
         }

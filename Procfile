@@ -1,0 +1,1 @@
+web: gunicorn pdisplays.wsgi --log-file -
