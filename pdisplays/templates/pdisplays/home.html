@@ -3,8 +3,7 @@
 {% load bootstrap3 pdisplay_tags %}
 {% block content %}
 <div class="col-md-7 text-left">
-	<a href="#">About project</a>&nbsp;&nbsp;&nbsp;
-	<a href="#">Contribution</a>
+	<a href="{% url 'all-displays' %}">All Displays</a>&nbsp;&nbsp;&nbsp;
 </div>
 <div class="col-md-5 text-right">
 	{% if search %}

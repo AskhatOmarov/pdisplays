@@ -6,27 +6,27 @@ from tastypie.resources import Resource, ModelResource
 from tastypie.utils import trailing_slash
 from tastypie.authorization import Authorization
 
-from pdisplays.models import Display, Description, Value, Section, SectionField
+from pdisplays.models import Display, Description#, Value, Section, SectionField
 
 
-class ValueResource(ModelResource):
-    section_field = fields.CharField(attribute='section_field')
+# class ValueResource(ModelResource):
+#     section_field = fields.CharField(attribute='section_field')
 
-    class Meta:
-        queryset = Value.objects.all()
-        resource_name = 'value'
-        include_resource_uri = False
-        excludes = ['id', 'date_created', 'date_edited']
+#     class Meta:
+#         queryset = Value.objects.all()
+#         resource_name = 'value'
+#         include_resource_uri = False
+#         excludes = ['id', 'date_created', 'date_edited']
 
-    def dehydrate(self, bundle):
+#     def dehydrate(self, bundle):
 
-        from pdisplays.models import SectionField
-        bundle.data['slug'] = SectionField.objects.get(title=bundle.data['section_field']).slug
-        bundle.data.pop('section_field')
-        return bundle
+#         from pdisplays.models import SectionField
+#         bundle.data['slug'] = SectionField.objects.get(title=bundle.data['section_field']).slug
+#         bundle.data.pop('section_field')
+#         return bundle
 
 class DescriptionResource(ModelResource):
-    values = fields.ToManyField(ValueResource, 'values', full=True)
+    # values = fields.ToManyField(ValueResource, 'values', full=True)
 
     class Meta:
         queryset = Description.objects.all()
@@ -96,8 +96,6 @@ class DisplayResource(ModelResource):
         return render_to_response('pdisplays/_display_description.html', {
             # Other things here.
             "display": obj,
-            "sections": Section.objects.all(),
-            "section_fields": SectionField.objects.all(),
         })
 
 class FormResource(Resource):

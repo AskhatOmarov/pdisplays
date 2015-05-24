@@ -21,15 +21,16 @@ v1_api.register(DisplayResource())
 v1_api.register(FormResource())
 
 from users.models import User
-from pdisplays.models import Display, Section, SectionField
+from pdisplays.models import Display, Description#, Section, SectionField
 
-admin.site.register(Display)
 admin.site.register(User)
-admin.site.register(Section)
+admin.site.register(Display)
+admin.site.register(Description)
+# admin.site.register(Section)
 
-@admin.register(SectionField)
-class SectionFieldAdmin(admin.ModelAdmin):
-    exclude = ('slug',)
+# @admin.register(SectionField)
+# class SectionFieldAdmin(admin.ModelAdmin):
+#     exclude = ('slug',)
 
 
 urlpatterns = patterns('',

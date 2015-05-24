@@ -3,11 +3,28 @@
 <div style="color:white">
 	<h2>{{display.title}}</h2>
 	{% with description=display|get_description %}
-		{% for section in sections %}
-			<h4>{{section.title}}</h4>
-			{% for field in section.fields.all %}
-				<b>{{ field.title }}: </b>{{ description|get_descr_value:field.slug}}<br />
-			{% endfor %}
-		{% endfor %}
+		<h4>Technical parameters</h4>
+		{% if description.size %}<b>Size</b>: {{description.size}}<br />{% endif %}
+		{% if description.power_consumption %}<b>Power consumption</b>: {{description.power_consumption}}<br />{% endif %}
+		{% if description.resolution %}<b>Resolution</b>: {{description.resolution}}<br />{% endif %}
+		{% if description.type %}<b>Type</b>: {{description.type}}<br />{% endif %}
+		{% if description.input_formats %}<b>Size</b>: {{description.input_formats}}<br />{% endif %}
+		{% if description.viewing_distance %}<b>Viewing distance</b>: {{description.viewing_distance}}<br />{% endif %}
+		{% if description.manufacturer %}<b>Manufacturer</b>: {{description.manufacturer}}<br />{% endif %}
+		{% if description.model %}<b>Model</b>: {{description.model}}<br />{% endif %}
+
+		<h4>Experience</h4>
+		{% if description.vision_quality %}<b>Vision quality</b>: {{description.vision_quality}}<br />{% endif %}
+		{% if description.content_relevance %}<b>Content relevance</b>: {{description.content_relevance}}<br />{% endif %}
+		{% if description.interaction_potential %}<b>Interaction potential</b>: {{description.interaction_potential}}<br />{% endif %}
+		{% if description.common_impression %}<b>Common impression</b>: {{description.common_impression}}<br />{% endif %}
+
+		<h4>Deployment</h4>
+		{% if description.crowd_coverage %}<b>Crowd coverage</b>: {{description.crowd_coverage}}<br />{% endif %}
+		{% if description.indoor_outdoor %}<b>Indoor/outdoor</b>: {{description.indoor_outdoor}}<br />{% endif %}
+		{% if description.mode_of_operation %}<b>Mode of operation</b>: {{description.mode_of_operation}}<br />{% endif %}
+		{% if description.surroundings %}<b>Surroundings</b>: {{description.surroundings}}<br />{% endif %}
+		{% if description.total_score %}<b>Total score</b>: {{description.total_score}}<br />{% endif %}
+
 	{% endwith %}
 </div>

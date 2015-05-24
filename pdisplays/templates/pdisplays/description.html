@@ -2,10 +2,27 @@
 {% load bootstrap3 pdisplay_tags %}
 {% block payload %}
 	<h3>Description # {{object.pk}}</h3>
-	{% for section in sections %}
-		<h3>{{section.title}}</h3>
-		{% for field in section.fields.all %}
-			<b>{{ field.title }}: </b>{{ object.values.all|get_value:field.slug}}<br />
-		{% endfor %}
-	{% endfor %}
+	<h4>Technical parameters</h4>
+	{% if object.size %}<b>Size</b>: {{object.size}}<br />{% endif %}
+	{% if object.power_consumption %}<b>Power consumption</b>: {{object.power_consumption}}<br />{% endif %}
+	{% if object.resolution %}<b>Resolution</b>: {{object.resolution}}<br />{% endif %}
+	{% if object.type %}<b>Type</b>: {{object.type}}<br />{% endif %}
+	{% if object.input_formats %}<b>Size</b>: {{object.input_formats}}<br />{% endif %}
+	{% if object.viewing_distance %}<b>Viewing distance</b>: {{object.viewing_distance}}<br />{% endif %}
+	{% if object.manufacturer %}<b>Manufacturer</b>: {{object.manufacturer}}<br />{% endif %}
+	{% if object.model %}<b>Model</b>: {{object.model}}<br />{% endif %}
+
+	<h4>Experience</h4>
+	{% if object.vision_quality %}<b>Vision quality</b>: {{object.vision_quality}}<br />{% endif %}
+	{% if object.content_relevance %}<b>Content relevance</b>: {{object.content_relevance}}<br />{% endif %}
+	{% if object.interaction_potential %}<b>Interaction potential</b>: {{object.interaction_potential}}<br />{% endif %}
+	{% if object.common_impression %}<b>Common impression</b>: {{object.common_impression}}<br />{% endif %}
+
+	<h4>Deployment</h4>
+	{% if object.crowd_coverage %}<b>Crowd coverage</b>: {{object.crowd_coverage}}<br />{% endif %}
+	{% if object.indoor_outdoor %}<b>Indoor/outdoor</b>: {{object.indoor_outdoor}}<br />{% endif %}
+	{% if object.mode_of_operation %}<b>Mode of operation</b>: {{object.mode_of_operation}}<br />{% endif %}
+	{% if object.surroundings %}<b>Surroundings</b>: {{object.surroundings}}<br />{% endif %}
+	{% if object.total_score %}<b>Total score</b>: {{object.total_score}}<br />{% endif %}
+
 {% endblock %}
