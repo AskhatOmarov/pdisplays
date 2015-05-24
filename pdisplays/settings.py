@@ -120,7 +120,16 @@ class BaseConfiguration(Configuration):
         rel('locale'),
     )
     # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+    AWS_ACCESS_KEY_ID = 'AKIAJJW6HILACLZYNQ7Q'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'pdisplays'
+
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
     TASTYPIE_DEFAULT_FORMATS = ['json']
 
