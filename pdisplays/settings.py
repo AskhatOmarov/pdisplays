@@ -78,7 +78,7 @@ class BaseConfiguration(Configuration):
             'NAME': 'heroku_31a7e683faba4b1',
             'USER': 'b44ba429f7e32e',
             'PASSWORD': '3ae77e10',
-            'HOST': '',
+            'HOST': 'us-cdbr-iron-east-02.cleardb.net/heroku_31a7e683faba4b1',
             'PORT': '',
         }
     }
