@@ -15,3 +15,4 @@ django-tastypie
 django-geoposition
 django-tastypie-swagger
 simplejson
+whitenoise==1.0.6

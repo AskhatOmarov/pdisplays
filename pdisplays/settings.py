@@ -119,7 +119,8 @@ class BaseConfiguration(Configuration):
     LOCALE_PATHS = (
         rel('locale'),
     )
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+    # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
     TASTYPIE_DEFAULT_FORMATS = ['json']
 
